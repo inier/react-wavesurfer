@@ -37,22 +37,23 @@ function positiveIntegerProptype(props, propName, componentName) {
   return null;
 }
 
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-    .toString(16)
-    .substring(1);
-  }
+const resizeThrottler = (fn) => () => {
+  let resizeTimeout;
 
-  return `${s4()}${s4()}-${s4()}-${s4()}}-${s4()}-${s4()}${s4()}${s4()}`;
-}
+  if (!resizeTimeout) {
+    resizeTimeout = setTimeout(() => {
+      resizeTimeout = null;
+      fn();
+    }, 66);
+  }
+};
 
 class Wavesurfer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      pos: 0
+      isReady: false
     };
 
     if (typeof WaveSurfer === undefined) {
@@ -60,11 +61,33 @@ class Wavesurfer extends Component {
     }
 
     this._wavesurfer = Object.create(WaveSurfer);
-    this._isReady = false;
-
     this._loadMediaElt = this._loadMediaElt.bind(this);
     this._loadAudio = this._loadAudio.bind(this);
     this._seekTo = this._seekTo.bind(this);
+
+    if (this.props.responsive) {
+      this._handleResize = resizeThrottler(() => {
+        // pause playback for resize operation
+        if (this.props.playing) {
+          this._wavesurfer.pause();
+        }
+
+        // resize the waveform
+        this._wavesurfer.drawBuffer();
+
+        // We allow resize before file isloaded, since we can get wave data from outside,
+        // so there might not be a file loaded when resizing
+        if (this.state.isReady) {
+          // restore previous position
+          this._seekTo(this.props.pos);
+        }
+
+        // restore playback
+        if (this.props.playing) {
+          this._wavesurfer.play();
+        }
+      });
+    }
   }
 
   componentDidMount() {
@@ -81,7 +104,10 @@ class Wavesurfer extends Component {
 
     // file was loaded, wave was drawn
     this._wavesurfer.on('ready', () => {
-      this._isReady = true;
+      this.setState({
+        isReady: true,
+        pos: this.props.pos
+      });
 
       // set initial position
       if (this.props.pos) {
@@ -147,6 +173,10 @@ class Wavesurfer extends Component {
     if (this.props.mediaElt) {
       this._loadMediaElt(this.props.mediaElt, this.props.audioPeaks);
     }
+
+    if (this.props.responsive) {
+      window.addEventListener('resize', this._handleResize, false);
+    }
   }
 
   // update wavesurfer rendering manually
@@ -172,7 +202,7 @@ class Wavesurfer extends Component {
 
     // update position
     if (nextProps.pos &&
-        this._isReady &&
+        this.state.isReady &&
         nextProps.pos !== this.props.pos &&
         nextProps.pos !== this.state.pos) {
       this._seekTo(nextProps.pos);
@@ -197,6 +227,21 @@ class Wavesurfer extends Component {
     if (this.props.zoom !== nextProps.zoom) {
       this._wavesurfer.zoom(nextProps.zoom);
     }
+
+    // update audioRate
+    if (this.props.options.audioRate !== nextProps.options.audioRate) {
+      this._wavesurfer.setPlaybackRate(nextProps.options.audioRate);
+    }
+
+    // turn responsive on
+    if (nextProps.responsive && this.props.responsive !== nextProps.responsive) {
+      window.addEventListener('resize', this._handleResize, false);
+    }
+
+    // turn responsive off
+    if (!nextProps.responsive && this.props.responsive !== nextProps.responsive) {
+      window.removeEventListener('resize', this._handleResize);
+    }
   }
 
   shouldComponentUpdate() {
@@ -211,6 +256,10 @@ class Wavesurfer extends Component {
 
     // destroy wavesurfer instance
     this._wavesurfer.destroy();
+
+    if (this.props.responsive) {
+      window.removeEventListener('resize', this._handleResize);
+    }
   }
 
   // receives seconds and transforms this to the position as a float 0-1
@@ -266,13 +315,12 @@ class Wavesurfer extends Component {
   }
 
   render() {
-    let childrenWithProps = (this.props.children)
+    const childrenWithProps = (this.props.children)
       ? React.Children.map(
         this.props.children,
         child => React.cloneElement(child, {
           wavesurfer: this._wavesurfer,
-          isReady: this._isReady,
-          key: guid()
+          isReady: this.state.isReady
         }))
       : false;
     return (
@@ -307,6 +355,7 @@ Wavesurfer.propTypes = {
   audioPeaks: PropTypes.array,
   volume: PropTypes.number,
   zoom: PropTypes.number,
+  responsive: PropTypes.bool,
   onPosChange: PropTypes.func,
   children: PropTypes.oneOfType([
     PropTypes.element,
@@ -349,6 +398,7 @@ Wavesurfer.defaultProps = {
   playing: false,
   pos: 0,
   options: WaveSurfer.defaultParams,
+  responsive: true,
   onPosChange: () => {}
 };
 

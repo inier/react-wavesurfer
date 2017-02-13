@@ -4,11 +4,19 @@ require('imports?define=>false,exports=>false!wavesurfer.js/dist/plugin/wavesurf
 class Minimap extends Component {
 
   componentDidMount() {
-    this._init = this._init.bind(this);
     this._map = undefined;
 
-    if (this.props.isReady) this._init();
-    this.props.wavesurfer.on('ready', this._init);
+    // on('ready') returns an event descriptor which is an
+    // object which has the property un, which is the un method
+    // properly bound to this callback, we cache it and can call
+    // it alter to just remove this event listener
+    this._readyListener = this.props.wavesurfer.on('ready', () => {
+      this._init();
+    });
+  }
+
+  componentWillUnmount() {
+    this._readyListener.un();
   }
 
   _init() {

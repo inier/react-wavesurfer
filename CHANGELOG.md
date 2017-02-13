@@ -1,6 +1,38 @@
 ## Change Log
 
+### v0.8.3 (2017/02/05 19:36 +00:00)
+- [afce60f](https://github.com/mspae/react-wavesurfer/commit/afce60f70598f1733480dd7b52af048e9da1e96f) updated changelog and bumped version for 0.8.3 (@mspae)
+- [#30](https://github.com/mspae/react-wavesurfer/pull/30) Merge pull request #30 from omerts/master (@omerts)
+- [4fcd41c](https://github.com/mspae/react-wavesurfer/commit/4fcd41c72481b0eca938c41b8f6b4b46bf655a72) add support for responsiveness when peaks are pre-rendered
+- [a731025](https://github.com/mspae/react-wavesurfer/commit/a731025ddca62d3d50aa8e933b1ba1eb8e885104) updated CHANGELOG.md for 0.8.2 (@mspae)
+- [4c77e86](https://github.com/mspae/react-wavesurfer/commit/4c77e868cb18cc447e0d17bbe0e7a8010c383dcc) updated CHANGELOG.md for 0.8.2 (@mspae)
+
+### v0.8.2 (2016/10/28 14:15 +00:00)
+- [ecdc3d5](https://github.com/mspae/react-wavesurfer/commit/ecdc3d53e36e2f6efb22ffee6a26f8c9d6662084) bump version to 0.8.2 (@mspae)
+- [ff54576](https://github.com/mspae/react-wavesurfer/commit/ff54576984638e678837537d5518bdcd4f5ed674) resize operation stops playback and restores playback position after resize is complete (@mspae)
+- [adae27d](https://github.com/mspae/react-wavesurfer/commit/adae27db19ce7fdbf756d49800074dfdea236e53) bumped version because of wrong build (@mspae)
+- [4aedb61](https://github.com/mspae/react-wavesurfer/commit/4aedb61774a60212a9c78f1e406c089146a9c9d0) updated CHANGELOG.md for 0.8.0 (@mspae)
+
+### v0.8.0 (2016/09/25 15:57 +00:00)
+- [86b588b](https://github.com/mspae/react-wavesurfer/commit/86b588ba7458a77575df3f356939dce48ce7498d) bumped version to 0.8.0 (@mspae)
+- [1fc6106](https://github.com/mspae/react-wavesurfer/commit/1fc610648e5e92fdda34bfcacb14e3ff47f48f74) updated documentation with common pitfalls (@mspae)
+- [d7ee588](https://github.com/mspae/react-wavesurfer/commit/d7ee5886bc5d873c79749257c3c45fca4b6315d4) removed excess space (@mspae)
+- [c53e434](https://github.com/mspae/react-wavesurfer/commit/c53e4344f136c4077d257e992687b503218a4ff2) fixed formatting issues, remove log statement (@mspae)
+- [879025c](https://github.com/mspae/react-wavesurfer/commit/879025c613ff8122ac26bc1a37fe3e5fe94def0d) better event listener for ready event in minimap plugin (@mspae)
+- [588e771](https://github.com/mspae/react-wavesurfer/commit/588e771fd484e328bd28e2f6703660775c5e81a5) working on minimap init bug (@mspae)
+- [d7f610b](https://github.com/mspae/react-wavesurfer/commit/d7f610bb65d0a65d27e0a41d1a05ee3fa343fe21) responsive prop (@mspae)
+- [bbb922a](https://github.com/mspae/react-wavesurfer/commit/bbb922a628f88cb8e149a11db6cd4fbdfefa95c5) updated CHANGELOG.md for 0.7.4 (@mspae)
+
+### v0.7.4 (2016/09/23 20:55 +00:00)
+- [c0ad38f](https://github.com/mspae/react-wavesurfer/commit/c0ad38f6b7117597036d96ff9be406cbc816f40f) bumped version to 0.7.4 (@mspae)
+- [06a7a9d](https://github.com/mspae/react-wavesurfer/commit/06a7a9d4c9fd142e733dbf6d2dc04dccb975da90) fixed minimap bug which caused it to not render sometimes (@mspae)
+- [8db939e](https://github.com/mspae/react-wavesurfer/commit/8db939e4fe87f9b6eac0156b2f3cbf365b880743) root component's isReady flag is now normal state (@mspae)
+- [dbf117d](https://github.com/mspae/react-wavesurfer/commit/dbf117d627d5e865b21cd512299034a8427d9a7a) removed gui keys (@mspae)
+- [90d25d2](https://github.com/mspae/react-wavesurfer/commit/90d25d2cc904ada8f6dbff15f96a9aa5b354268b) added audio rate dynamic setting in componentWillReceiveProps (@mspae)
+- [8fd7a11](https://github.com/mspae/react-wavesurfer/commit/8fd7a119e8e6371b88059b0b339de959fa73f27d) updated CHANGELOG.md for v0.7.3 (@mspae)
+
 ### v0.7.3 (2016/08/22 19:01 +00:00)
+- [6d4cbe8](https://github.com/mspae/react-wavesurfer/commit/6d4cbe8a2e451aaa92479203e26e6e76d149aeff) bumped version (@mspae)
 - [777a728](https://github.com/mspae/react-wavesurfer/commit/777a72845c76ff2c9776ca5a6b973416685373c5) updated CHANGELOG.md with v0.7.3 (@mspae)
 - [efe4156](https://github.com/mspae/react-wavesurfer/commit/efe4156519ac24b4a0e3f0b6b7d21d5d7cace6e7) webpack dev server is using eval-source-map now (@mspae)
 - [fdf11d3](https://github.com/mspae/react-wavesurfer/commit/fdf11d31bbbecc9c9e9090ebdd88c79c03693650) made linting pass without error, updating legacy patterns and tweaking linting settings (@mspae)
