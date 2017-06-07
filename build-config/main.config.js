@@ -27,7 +27,7 @@ module.exports = {
       loader: 'babel-loader'
     },
     {
-      test: require.resolve("wavesurfer.js"),
+      test: require.resolve("yfmd_wavesurfer.js"),
       loader: "expose?WaveSurfer"
     }]
   },
@@ -43,7 +43,7 @@ module.exports = {
       commonjs: 'react',
       amd: 'react'
     },
-    'wavesurfer.js': {
+    'yfmd_wavesurfer.js': {
       root: 'WaveSurfer',
       commonjs2: 'wavesurfer.js',
       commonjs: 'wavesurfer.js',

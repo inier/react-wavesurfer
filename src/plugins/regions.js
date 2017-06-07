@@ -1,5 +1,5 @@
 import { Component, PropTypes } from 'react';
-require('imports?define=>false,exports=>false!wavesurfer.js/dist/plugin/wavesurfer.regions.js');
+require('imports?define=>false,exports=>false!yfmd_wavesurfer.js/dist/plugin/wavesurfer.regions.js');
 
 const REGIONS_EVENTS = [
   'region-in',

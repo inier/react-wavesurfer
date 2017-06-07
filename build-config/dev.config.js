@@ -40,7 +40,7 @@ module.exports = {
         include: path.join(__dirname, '../')
       },
       {
-        test: require.resolve("wavesurfer.js"),
+        test: require.resolve("yfmd_wavesurfer.js"),
         loader: "expose?WaveSurfer"
       }
     ]
