@@ -1,6 +1,6 @@
 import React from 'react';
 import Wavesurfer from '../../src/react-wavesurfer';
-import Timeline from '../../src/plugins/timeline';
+import Timeline from '../../lib/plugins/timeline';
 
 class TimelineExample extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class TimelineExample extends React.Component {
   }
 
   handleTogglePlay() {
+    debugger;
     this.setState({
       playing: !this.state.playing
     });
@@ -28,7 +29,7 @@ class TimelineExample extends React.Component {
     };
     return (
       <div className="example col-xs-12">
-        <h3>Timeline</h3>
+        <h3 onClick={this.handleTogglePlay}>Timeline</h3>
         <Wavesurfer
           audioFile={this.state.audioFile}
           playing={this.state.playing}

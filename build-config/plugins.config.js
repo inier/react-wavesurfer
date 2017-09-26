@@ -41,18 +41,12 @@ module.exports = {
           commonjs: 'react',
           amd: 'react'
         },
-        'wavesurfer.js': {
+        '@yfmd/wavesurfer.js': {
           root: 'WaveSurfer',
-          commonjs2: 'wavesurfer.js',
-          commonjs: 'wavesurfer.js',
-          amd: 'wavesurfer'
+          commonjs2: '@yfmd/wavesurfer.js',
+          commonjs: '@yfmd/wavesurfer.js',
+          amd: '@yfmd/wavesurfer.js'
         },
-        'wavesurfer': {
-          root: 'WaveSurfer',
-          commonjs2: 'wavesurfer.js',
-          commonjs: 'wavesurfer.js',
-          amd: 'wavesurfer'
-        }
       }
     ],
 

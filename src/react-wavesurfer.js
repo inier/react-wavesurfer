@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import assign from 'deep-assign';
 
-const WaveSurfer = require('yfmd_wavesurfer.js');
+const WaveSurfer = require('@yfmd/wavesurfer.js');
 
 const EVENTS = [
   'audioprocess',

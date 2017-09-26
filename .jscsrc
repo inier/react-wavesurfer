@@ -3,5 +3,6 @@
     "plugins": [ "jscs-jsx-rules" ],
     "disallowTrailingComma": true,
     "requireTrailingComma": false,
-    "requirePaddingNewLinesAfterBlocks": false
+    "requirePaddingNewLinesAfterBlocks": false,
+    "maximumLineLength": false
 }
