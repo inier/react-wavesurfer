@@ -244,9 +244,9 @@ class Wavesurfer extends Component {
     }
   }
 
-  shouldComponentUpdate() {
-    return false;
-  }
+  // shouldComponentUpdate() {
+  //   return false;
+  // }
 
   componentWillUnmount() {
     // remove listeners

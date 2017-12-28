@@ -37,7 +37,24 @@ class RegionsExample extends React.Component {
 
   handleTogglePlay() {
     this.setState({
-      playing: !this.state.playing
+      playing: !this.state.playing,
+      regions: {
+        One: {
+          id: 'One',
+          start: 0,
+          end: 7
+        },
+        Two: {
+          id: 'Two',
+          start: 4,
+          end: 5.25
+        },
+        Three: {
+          id: 'Three',
+          start: 4.75,
+          end: 6.2
+        }
+      }
     });
   }
 

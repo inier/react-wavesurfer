@@ -14,7 +14,6 @@ class TimelineExample extends React.Component {
   }
 
   handleTogglePlay() {
-    debugger;
     this.setState({
       playing: !this.state.playing
     });
