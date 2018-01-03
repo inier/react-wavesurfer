@@ -1,6 +1,6 @@
 import React from 'react';
 import Wavesurfer from '../../src/react-wavesurfer';
-import Timeline from '../../lib/plugins/timeline';
+import Timeline from '../../src/plugins/timeline';
 
 class TimelineExample extends React.Component {
   constructor(props) {

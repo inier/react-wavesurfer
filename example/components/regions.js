@@ -15,7 +15,8 @@ class RegionsExample extends React.Component {
         One: {
           id: 'One',
           start: 0,
-          end: 3
+          end: 3,
+          color: 'rgba(113, 34, 34, 0.1)'
         },
         Two: {
           id: 'Two',
@@ -42,7 +43,8 @@ class RegionsExample extends React.Component {
         One: {
           id: 'One',
           start: 0,
-          end: 7
+          end: 7,
+          color: '"rgba(113, 34, 34, 0.1)"'
         },
         Two: {
           id: 'Two',
